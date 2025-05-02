@@ -13,3 +13,6 @@ app.use('/', routes);
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
+
+app.set('view engine', 'ejs');
+app.set('views', './views'); // ou outro caminho se estiver diferente
