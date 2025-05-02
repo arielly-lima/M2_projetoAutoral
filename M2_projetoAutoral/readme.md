@@ -1,83 +1,51 @@
-# Boilerplate MVC em Node.js com PostgreSQL
+# Habits - Plataforma de Organização Pessoal
 
-Este projeto é um boilerplate básico para uma aplicação Node.js seguindo o padrão MVC (Model-View-Controller), utilizando PostgreSQL como banco de dados.
+## 📌 Descrição
+#### Gerenciador de tarefas para organização e produtividade.
 
-## Requisitos
+Habits é uma plataforma web para organização pessoal de tarefas, hábitos e metas, com áreas temáticas como educação, saúde e finanças. Cada eixo conta com templates adaptáveis à rotina do usuário. Mais do que um gestor de tarefas, a plataforma promove a autenticidade por meio de perfis personalizados, onde é possível registrar hobbies, gostos, séries, livros e outros interesses. <br>
 
-- Node.js (versão X.X.X)
-- PostgreSQL (versão X.X.X)
+Fruto da atividade individual da disciplina de programação do Inteli,
+este projeto estrutura um sistema web com backend em Node.js, framework Express e organização de pastas no padrão MVC (Model-View-Controller). Inclui também planejamento do banco de dados com modelo relacional.<br>
 
-## Instalação
+## 📁 Estrutura de Pastas
+O projeto segue o padrão arquitetural **MVC (Model-View-Controller)**, que organiza o código em três camadas principais:
 
-1. **Clonar o repositório:**
+- **Model**: Define a estrutura dos dados e realiza a comunicação com o banco.
+- **View**: Responsável pelas páginas que o usuário vê.
+- **Controller**: Processa as requisições, interage com os Models e retorna as Views.
 
-```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
-   cd seu-projeto
-```
+Para isso, a estrutura de pastas foi organizada da seguinte forma:
 
-2. **Instalar as dependências:**
-    
-```bash
-npm install
-```
-    
-3. **Configurar o arquivo `.env`:**
-    
-Renomeie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente necessárias, como as configurações do banco de dados PostgreSQL.
-    
+- `assets/`: Contém imagens e outros arquivos estáticos.
+- `document/`: Armazena os documentos do projeto, como o modelo do banco de dados e a documentação WAD.
+ - `config/`: Arquivos de configuração, como a conexão com o banco de dados.
+- `controllers/`, `models/`, `routes/`, `views/`: Pastas principais do padrão MVC.
+- `styles/` e `scripts/`: Arquivos CSS e JS públicos.
+- `README.md`: Documento explicativo principal do projeto.
 
-Configuração do Banco de Dados
-------------------------------
+## 🔧 Como Executar Localmente
 
-1. **Criar banco de dados:**
-    
-    Crie um banco de dados PostgreSQL com o nome especificado no seu arquivo `.env`.
-    
-2. **Executar o script SQL de inicialização:**
-    
-```bash
-npm run init-db
-```
-    
-Isso criará a tabela `users` no seu banco de dados PostgreSQL com UUID como chave primária e inserirá alguns registros de exemplo.
-    
+#### Tecnologias necessárias:
+- **Node.js**
+- **Express.js**
+- **EJS (em desenvolvimento)**
+- **JavaScript**
+- **Arquitetura MVC**
 
-Funcionalidades
----------------
+#### Executar localmente
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/arielly-lima/M2_projetoAutoral.git
+   cd M2_projetoAutoral
 
-* **Padrão MVC:** Estrutura organizada em Model, View e Controller.
-* **PostgreSQL:** Banco de dados relacional utilizado para persistência dos dados.
-* **UUID:** Utilização de UUID como chave primária na tabela `users`.
-* **Scripts com `nodemon`:** Utilização do `nodemon` para reiniciar automaticamente o servidor após alterações no código.
-* **Testes:** Inclui estrutura básica para testes automatizados.
+2. Instale as dependências:
+   ```bash
+   npm install
 
-Scripts Disponíveis
--------------------
-
-* `npm start`: Inicia o servidor Node.js.
-* `npm run dev`: Inicia o servidor com `nodemon`, reiniciando automaticamente após alterações no código.
-* `npm run test`: Executa os testes automatizados.
-* `npm run test:coverage`: Executa os testes e gera um relatório de cobertura de código.
-
-Estrutura de Diretórios
------------------------
-
-* **`config/`**: Configurações do banco de dados e outras configurações do projeto.
-* **`controllers/`**: Controladores da aplicação (lógica de negócio).
-* **`models/`**: Modelos da aplicação (definições de dados e interações com o banco de dados).
-* **`routes/`**: Rotas da aplicação.
-* **`tests/`**: Testes automatizados.
-* **`views/`**: Views da aplicação (se aplicável).
-
-Contribuição
-------------
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir um issue ou enviar um pull request.
-
-Licença
--------
-
-Este projeto está licenciado sob a Licença MIT.
-
-Este README.md fornece uma visão geral clara do boilerplate, incluindo instruções de instalação, configuração do banco de dados, funcionalidades principais, scripts disponíveis, estrutura de diretórios, como contribuir e informações de licença. Certifique-se de personalizar as seções com detalhes específicos do seu projeto conforme necessário.
+3. Inicie o servidor:
+    ```bash
+    node server.js
+4. Acesse em seu navegador:
+    ```bash
+    http://localhost:3000
