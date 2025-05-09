@@ -1,7 +1,7 @@
 # Web Application Document - Projeto Individual - Módulo 2 - Inteli
-## Nome do Projeto
+## Habits
 
-#### Autor do projeto
+#### Autor: Maria Arielly
 
 ## Sumário
 
@@ -29,7 +29,7 @@ A ideia é criar uma plataforma que não apenas auxilie na produtividade, mas qu
 ### 2.1. Personas (Semana 01 - opcional)
 #### Persona 1
 
-Person que foi construída para o desenvolvimento do projeto habits:
+Persona que foi construída para o desenvolvimento do projeto habits:
 <div align="center">
 <sup> Figura 1: Persona 01 </sup>
 <img src= "../assets/assets_wad/persona.png"/><br>
