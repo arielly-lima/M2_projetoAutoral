@@ -89,7 +89,7 @@ A modelagem relacional, é o processo inicial da construção de um banco de dad
 Link para o material: https://dbdiagram.io/d/681c1c345b2fc4582fb07cf2</sup>
 </div>
 
-| # Tabela             | Descrição                                                                 |
+|  Tabela             | Descrição                                                                 |
 |--------------------|---------------------------------------------------------------------------|
 | `usuario`          | Armazena os dados principais do usuário: nome, e-mail e senha para login. |
 | `interesses`       | Guarda os gostos pessoais do usuário, como hobbies, filmes e músicas.     |
