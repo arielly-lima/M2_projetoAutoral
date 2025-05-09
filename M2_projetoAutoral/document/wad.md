@@ -33,7 +33,7 @@ Persona que foi construída para o desenvolvimento do projeto habits:
 
 <div align="center">
 <sup> Figura 1: Persona 01 </sup>
-<img src= "../assets/assets_wad/persona.png"/><br>
+<img src="../assets/assets_wad/persona.png"/><br>
 <sup>Fonte: Material produzido pelo autor (2025).</sup>
 </div>
 
