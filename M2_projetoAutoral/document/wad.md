@@ -1,5 +1,5 @@
 # Web Application Document - Projeto Individual - Módulo 2 - Inteli
-## Habits
+## 📋 Habits
 
 #### Autor: Maria Arielly
 
@@ -154,6 +154,7 @@ CREATE TABLE "templates_metas" (
   "prazo" date
 );
 
+//Alteração das tabelas para adição da chave estrangeira (foreign key) 
 ALTER TABLE "interesses" ADD FOREIGN KEY ("id_usuario") REFERENCES "usuario" ("id_usuario");
 
 ALTER TABLE "habitos" ADD FOREIGN KEY ("id_usuario") REFERENCES "usuario" ("id_usuario");
