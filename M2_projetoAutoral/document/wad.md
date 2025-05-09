@@ -30,6 +30,7 @@ A ideia é criar uma plataforma que não apenas auxilie na produtividade, mas qu
 #### Persona 1
 
 Persona que foi construída para o desenvolvimento do projeto habits:
+
 <div align="center">
 <sup> Figura 1: Persona 01 </sup>
 <img src= "../assets/assets_wad/persona.png"/><br>
