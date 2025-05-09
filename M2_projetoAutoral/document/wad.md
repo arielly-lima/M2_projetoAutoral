@@ -86,10 +86,10 @@ A modelagem relacional, é o processo inicial da construção de um banco de dad
 <sup> Figura 2: Modelagem relacional do banco de dados </sup>
 <img src= "../assets/assets_wad/modelo-banco.png"/><br>
 <sup>Fonte: Material produzido pelo autor (2025).<br>
-Link para o material: https://dbdiagram.io/d/681c1c345b2fc4582fb07cf2 </sup>
+Link para o material: https://dbdiagram.io/d/681c1c345b2fc4582fb07cf2</sup>
 </div>
 
-| Tabela             | Descrição                                                                 |
+| # Tabela             | Descrição                                                                 |
 |--------------------|---------------------------------------------------------------------------|
 | `usuario`          | Armazena os dados principais do usuário: nome, e-mail e senha para login. |
 | `interesses`       | Guarda os gostos pessoais do usuário, como hobbies, filmes e músicas.     |
