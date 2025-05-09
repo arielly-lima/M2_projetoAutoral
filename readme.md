@@ -3,7 +3,7 @@
 ## 📌 Descrição
 #### Gerenciador de tarefas para organização e produtividade.
 
-Habits é uma plataforma web para organização pessoal de tarefas, hábitos e metas, com áreas temáticas como educação, saúde e finanças. Cada eixo conta com templates adaptáveis à rotina do usuário. Mais do que um gestor de tarefas, a plataforma promove a autenticidade por meio de perfis personalizados, onde é possível registrar hobbies, gostos, séries, livros e outros interesses. <br>
+Habits é uma plataforma web para organização pessoal de tarefas, hábitos e metas, com áreas temáticas como educação, saúde e finanças. Cada eixo conta com templates adaptáveis à rotina do usuário. Mais do que um gestor de tarefas, a plataforma promove a autenticidade por meio de perfis personalizados, onde é possível registrar hobbies, gostos, séries, livros e outros interesses.<br>
 
 Fruto da atividade individual da disciplina de programação do Inteli,
 este projeto estrutura um sistema web com backend em Node.js, framework Express e organização de pastas no padrão MVC (Model-View-Controller). Inclui também planejamento do banco de dados com modelo relacional.<br>
@@ -23,6 +23,53 @@ Para isso, a estrutura de pastas foi organizada da seguinte forma:
 - `controllers/`, `models/`, `routes/`, `views/`: Pastas principais do padrão MVC.
 - `styles/` e `scripts/`: Arquivos CSS e JS públicos.
 - `README.md`: Documento explicativo principal do projeto.
+
+Estrutura detalhada:
+
+```
+M2-projetoAutoral/
+|
+├── assets/                # Imagens
+├── config/                # Arquivos de configuração (ex: conexão com banco)
+│   └── db.js
+├── controllers/
+|   └── userController.js           # Lógica de controle das requisições
+├── document
+|   └── wad.md
+├── models/                # Definição de modelos de dados (estrutura do banco)
+│   └── userModel.js
+├── routes/                # Definição das rotas do sistema
+│   └── index.js
+│   └── userRoutes.js
+├── services/              # Serviços auxiliares do sistema
+│   └── userService.js
+├── scripts/               # Arquivos de JavaScript públicos
+│    └── init.sql          #modelagem do SQL do banco de dados
+│    └── runSQLScript.js          
+├── views/                 # Arquivos CSS públicos
+│   └── components/
+│        └── header.ejs
+│   └── css/ 
+│        └── style.css
+│   └── layout/
+│        └── main.ejs
+│   └── pages/      
+├── tests/                # Arquivos de testes unitários
+|    └── userController.test.js  
+|    └── userModel.test.js   
+|    └── userRoutes.test.js 
+|    └── userService.test.js     
+│    └── example.test.js
+├── .gitignore             # Arquivo para ignorar arquivos no Git
+├── .env                   # Arquivo para variáveis de ambiente
+├── jest.config.js         # Arquivo de configuração do Jest
+├── package-lock.json      # Gerenciador de dependências do Node.js
+├── package.json           # Gerenciador de dependências do Node.js
+├── readme.md              # Documentação do projeto (Markdown)
+├── server.js              # Arquivo principal que inicializa o servidor
+└── rest.http              # Teste de endpoints (opcional)
+
+```
 
 ## 🔧 Como Executar Localmente
 
