@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= pageTitle %></title>  
+  <style>
+    <%- include('../css/style.css'); %>
+  </style>
+</head>
+<body>
+  <!-- Inclui o cabeçalho como um partial -->
+  <%- include('../components/header') %>
+
+  <main>
+    <!-- Renderiza o conteúdo da página específica -->
+    <%- include(content) %>
+  </main>
+
+  <footer>
+    <!-- Rodapé comum aqui -->
+    <p>Rodapé da Aplicação</p>
+  </footer>
+
+  <!-- Adicione scripts JS se necessário -->
+  <script src="/js/script.js"></script>
+
+  <script>
+    window.botpressWebChat = {
+      config: {
+        botId: "GLHA0LAD",  // substitua conforme necessário
+        hostUrl: "https://cdn.botpress.cloud/webchat/v2.4",
+        messagingUrl: "https://messaging.botpress.cloud",
+        clientId: "GLHA0LAD",  // mesmo ID
+        enableConversationDeletion: false,
+        showPoweredBy: false,
+      },
+      configUrl: "https://files.bpcontent.cloud/2025/05/06/01/20250506015834-GLHA0LAD.json"
+    };
+  </script>
+  <script src="https://cdn.botpress.cloud/webchat/v2.4/webchat.js" defer></script>
+  
+  
+</body>
+</html>
+
