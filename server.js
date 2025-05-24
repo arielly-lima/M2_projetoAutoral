@@ -1,18 +1,22 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const path = require('path');
+
+const routes = require('./routes'); // vai carregar index.js automaticamente
+
 const app = express();
-const PORT = 3000;
+const port = 3000;
 
-// Middleware para processar JSON
-app.use(express.json());
-
-// Rotas
-const routes = require('./routes/index');
-app.use('/', routes);
-
-// Inicializa o servidor
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+app.use(cors());
+app.use(bodyParser.json());
 
 app.set('view engine', 'ejs');
-app.set('views', './views'); // ou outro caminho se estiver diferente
+app.set('views', path.join(__dirname, 'views'));
+
+// Usa todas as rotas com o prefixo /api
+app.use('/api', routes);
+
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
+});

@@ -1,70 +1,51 @@
-// controllers/userController.js
+const pool = require('../config/db');
 
-const userService = require('../services/userService');
+//criar novo usuário
+exports.criarUsuario = async (req, res) => {
+  const { nome, email, senha } = req.body;
 
-const getAllUsers = async (req, res) => {
+  const query = 'INSERT INTO usuario (nome, email, senha) VALUES ($1, $2, $3) RETURNING *';
+  const values = [nome, email, senha];
+
+  //estrutura do JavaScript usada para testar um bloco de código que pode dar erro.
   try {
-    const users = await userService.getAllUsers();
-    res.status(200).json(users);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    const result = await pool.query(query, values);
+    const usuario = result.rows[0];
+    res.status(201).json(usuario);
+    
+  //o que fazer se der erro
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
 
-const getUserById = async (req, res) => {
+//login usuario
+exports.loginUsuario = async (req, res) => {
+  const { email, senha } = req.body;
+
+  const query = 'SELECT * FROM usuario WHERE email = $1';
+  const values = [email];
+
   try {
-    const user = await userService.getUserById(req.params.id);
-    if (user) {
-      res.status(200).json(user);
-    } else {
-      res.status(404).json({ error: 'Usuário não encontrado' });
+    const result = await pool.query(query, values);
+    const usuario = result.rows[0]; // pega o usuário do banco
+
+    if (!usuario || usuario.senha !== senha) {
+      return res.status(401).json({ mensagem: 'Email ou senha inválidos' });
     }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+
+    res.status(200).json({ mensagem: 'Login realizado com sucesso', usuario });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 };
 
-const createUser = async (req, res) => {
+//listar usuários
+exports.listarUsuarios = async (req, res) => {
   try {
-    const { name, email } = req.body;
-    const newUser = await userService.createUser(name, email);
-    res.status(201).json(newUser);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    const result = await pool.query('SELECT * FROM usuario');
+    res.json(result.rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
-};
-
-const updateUser = async (req, res) => {
-  try {
-    const { name, email } = req.body;
-    const updatedUser = await userService.updateUser(req.params.id, name, email);
-    if (updatedUser) {
-      res.status(200).json(updatedUser);
-    } else {
-      res.status(404).json({ error: 'Usuário não encontrado' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-const deleteUser = async (req, res) => {
-  try {
-    const deletedUser = await userService.deleteUser(req.params.id);
-    if (deletedUser) {
-      res.status(200).json(deletedUser);
-    } else {
-      res.status(404).json({ error: 'Usuário não encontrado' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-module.exports = {
-  getAllUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser
 };
