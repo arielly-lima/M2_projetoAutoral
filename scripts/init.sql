@@ -81,4 +81,9 @@ WHERE id_usuario=7;
 
 /* Excluindo a tarefa */
 DELETE FROM tarefas_do_dia
-WHERE id_usuario= 7
+WHERE id_usuario= 7;
+
+/* Alterando o titulo da tarefa */
+UPDATE tarefas_do_dia 
+SET titulo='Correr 5km'
+WHERE id_usuario= 4
