@@ -174,17 +174,80 @@ ALTER TABLE "templates_metas" ADD FOREIGN KEY ("id_usuario") REFERENCES "usuario
 
 ### 3.1.1 BD e Models (Semana 5)
 *Descreva aqui os Models implementados no sistema web*
+### 3.1.1 BD e Models (Semana 5)
+
+Nesta aplicação, os Models são responsáveis por acessar o banco de dados PostgreSQL de forma direta, utilizando comandos SQL por meio do módulo `pg`. Eles seguem o padrão da arquitetura MVC, mantendo separada a lógica de manipulação de dados.
+
+#### `models/tarefasModel.js`
+
+Este model interage com a tabela `tarefas_do_dia` e expõe funções que permitem aos controllers executarem operações de CRUD.
+
+**Funções implementadas:**
+- `criarTarefa({ id_usuario, id_habito, titulo, concluida })`: insere uma nova tarefa.
+- `listarTarefas()`: retorna todas as tarefas do banco.
+- `editarTarefa(id_tarefa, { titulo, concluida })`: atualiza título e status de uma tarefa.
+- `excluirTarefa(id_tarefa)`: exclui uma tarefa do banco.
+- `atualizarConclusao(id_tarefa, concluida)`: altera apenas o campo de conclusão.
+
+#### `models/userModel.js`
+**Funções implementadas:**
+
+- `getAll()`:  
+  Retorna todos os registros da tabela `users`.
+
+- `getById(id)`:  
+  Retorna um usuário específico com base no `id` informado.
+
+- `create(data)`:  
+  Insere um novo usuário no banco com os campos `name` e `email`.  
+  Retorna o objeto do usuário criado.
+
+- `update(id, data)`:  
+  Atualiza os campos `name` e `email` de um usuário existente, identificado pelo `id`.  
+  Retorna o usuário atualizado.
+
+- `delete(id)`:  
+  Remove um usuário com base no `id`.  
+  Retorna `true` se uma linha foi removida com sucesso.
+
+Cada função executa um comando SQL diretamente usando `pool.query()` e retorna os resultados ao controller que a chamou.
 
 ### 3.2. Arquitetura (Semana 5)
 
-*Posicione aqui o diagrama de arquitetura da sua solução de aplicação web. Atualize sempre que necessário.*
+<div align="center">
+<sup> Figura 3: Diagrama de arquitetura da aplicação web</sup>
+<img src= "../assets/assets_wad/diagrama_arquitetura.png"/><br>
+<sup>Fonte: Material produzido pelo autor (2025).<br>
+Link para o material no figma: https://www.figma.com/board/SC3SeS6kqGjQRja2g2Tn01/Untitled?node-id=0-1&t=ptFqUEU38XfJMzn4-1 </sup>
+</div>
 
-**Instruções para criação do diagrama de arquitetura**  
+**Instruções para entendimento do diagrama de arquitetura**  
 - **Model**: A camada que lida com a lógica de negócios e interage com o banco de dados.
 - **View**: A camada responsável pela interface de usuário.
 - **Controller**: A camada que recebe as requisições, processa as ações e atualiza o modelo e a visualização.
-  
-*Adicione as setas e explicações sobre como os dados fluem entre o Model, Controller e View.*
+
+#### View - Ainda em desenvolvimento
+Responsável por exibir a interface para o usuário e permitir a interação com o sistema. No momento, a View é representada por clientes que fazem requisições HTTP às rotas da API.
+
+#### Controller
+A camada de controle recebe as requisições HTTP da View e gerencia a lógica de negócios. Até o momento os dois controllers desenvolvidos para a aplicação são:
+
+- `userController`: Gerencia todas as operações relacionadas aos usuários, como criação, listagem, atualização e remoção de registros.
+- `tarefaController`: Lida com as tarefas do dia, permitindo criar, listar, editar, excluir e marcar tarefas como concluídas.
+
+Os controllers validam os dados recebidos da View, acionam os métodos SQL através de querys e retornam uma resposta formatada.
+
+#### Model  
+A camada de Model é composta pelos arquivos `userModel.js` e `tarefaModel.js`, que encapsulam a lógica de acesso ao banco de dados PostgreSQL. Cada Model executa comandos SQL diretamente (sem ORM), realizando operações nas tabelas `users` e `tarefas_do_dia`.
+
+---
+
+#### Fluxo de Dados
+
+- O **usuário (View)** envia uma requisição para o servidor, por exemplo, uma requisição `POST` para criar um novo usuário ou uma nova tarefa.
+- O **Controller** correspondente (`userController` ou `tarefaController`) recebe a requisição, processa os dados e chama o método apropriado do Model.
+- O **Model** executa a operação SQL no banco de dados e retorna os dados para o Controller.
+- O **Controller** envia uma resposta para a View, que exibe os dados para o usuário ou confirma a ação.
 
 ### 3.3. Wireframes (Semana 03 - opcional)
 
@@ -199,9 +262,91 @@ ALTER TABLE "templates_metas" ADD FOREIGN KEY ("id_usuario") REFERENCES "usuario
 
 *Posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização).*
 
-### 3.6. WebAPI e endpoints (Semana 05)
+### 3.6. WebAPI e Endpoints (Semana 05)
+A WebAPI foi desenvolvida em Node.js utilizando Express. 
+Todas as rotas principais para cada API estão no arquivo `server.js`.
 
-*Utilize um link para outra página de documentação contendo a descrição completa de cada endpoint. Ou descreva aqui cada endpoint criado para seu sistema.*  
+**Exemplo de rota criada para users e tarefas:**
+```javascript
+//carrega as rotas do userRoutes
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/users', userRoutes); //ativa a api/users/(rotas definida no userRoutes)
+
+//carrega as rotas do tarefaRoutes
+const tarefaRoutes = require('./routes/tarefaRoutes');
+app.use('/api/tarefa', tarefaRoutes); //ativa a api/tarefa/(rotas definida no tarefaRoutes)
+```
+
+#### **Usuários** (`api/users`)
+- **GET api/users**
+  Retorna a lista de todos os usuários.  
+  **Exemplo de resposta:**
+  ```json
+  [{ "id": 1, "name": "João", "email": "joao@gmail.com" }]
+  ```
+
+- **POST api/users**
+Cria um novo usuário.
+Corpo da requisição (JSON):
+```json
+  {
+    "name": "Maria",
+    "email": "maria@email.com",
+    "senha": "123456"
+  }
+  ```
+
+- **POST api/users/login**
+Realiza o login de um usuário.
+Corpo da requisição:
+```json
+{
+  "email": "maria@email.com",
+  "senha": "123456"
+}
+```
+----
+#### **Usuários** (`api/tarefa`)
+- **GET api/tarefa**
+Retorna todas as tarefas cadastradas.
+Corpo da requisição:
+
+- **POST api/tarefa**
+Cria uma nova tarefa.
+Corpo da requisição:
+```json
+{
+  "id_usuario": 1,
+  "id_habito": 2,
+  "titulo": "Ler por 30 minutos",
+  "concluida": false
+}
+```
+- **PUT api/tarefa/:id_tarefa**
+Atualiza o título e o status de conclusão da tarefa com base no ID.
+
+- **PATCH api/tarefa/:id_tarefa/concluida**
+Marca a tarefa como concluída ou não.
+Corpo da requisição:
+```json
+{
+  "concluida": true
+}
+```
+
+- **DELETE api/tarefa/:id_tarefa**
+Remove a tarefa com o ID informado.
+
+Para testar as endpointas fora do navegador utilize ferramentas como Insomnia ou Postman, apontando para:
+http://localhost:3000/api/users ou http://localhost:3000/api/tarefa.
+
+---
+Todos os endpoints retornam respostas no formato JSON e utilizam os códigos HTTP apropriados:
+
+``200`` (OK) para sucesso,
+``201`` (Created) para criação bem-sucedida,
+``400/404`` para erros de cliente,
+``500`` para falhas internas do servidor.
 
 ### 3.7 Interface e Navegação (Semana 07)
 

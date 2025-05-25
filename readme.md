@@ -34,6 +34,7 @@ M2-projetoAutoral/
 │   └── db.js
 ├── controllers/
 |   └── userController.js           # Lógica de controle das requisições
+|   └── tarefaController.js  
 ├── document
 |   └── wad.md
 ├── models/                # Definição de modelos de dados (estrutura do banco)
@@ -41,6 +42,7 @@ M2-projetoAutoral/
 ├── routes/                # Definição das rotas do sistema
 │   └── index.js
 │   └── userRoutes.js
+│   └── tarefaRoutes.js
 ├── services/              # Serviços auxiliares do sistema
 │   └── userService.js
 ├── scripts/               # Arquivos de JavaScript públicos
@@ -96,3 +98,32 @@ M2-projetoAutoral/
 4. Acesse em seu navegador:
     ```bash
     http://localhost:3000
+
+---------------
+
+### 📦 Como configurar o banco de dados PostgreSQL
+
+1. Crie uma conta no [Supabase](https://supabase.com/), ou similar.
+2. Crie um projeto
+3. Altere o arquivo .env com as informações de conexão do seu projeto:
+```
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=nome_do_usuario
+DB_PASSWORD=sua_senha
+DB_NAME=nome_do_banco
+```
+4. Edite o arquivo init.sql com o código SQL para criação do banco de dados
+---
+
+### 🧱 **Como rodar as migrações**
+
+Para testar ou criar novas migrações neste repositório, foi utilizado o aquivo `init.sql`
+Como executá-las:
+1. Clone o repositório
+2. Rode as migrações SQL com o comando: 
+
+    ```bash
+    npm run init-db 
+    ```
+3. Caso seja necessário, crie novas migrações utilizando o mesmo arquivo.

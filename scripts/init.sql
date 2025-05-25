@@ -64,6 +64,21 @@ ALTER TABLE "tarefas_do_dia" ADD FOREIGN KEY ("id_habito") REFERENCES "habitos" 
 
 ALTER TABLE "templates_metas" ADD FOREIGN KEY ("id_usuario") REFERENCES "usuario" ("id_usuario");
 
+/* MIGRATIONS */
+
 /* assegurando que só exista 1 usuário com o mesmo email */
-ALTER TABLE usuario
-ADD CONSTRAINT unique_email UNIQUE (email);
+/* ALTER TABLE usuario
+ADD CONSTRAINT unique_email UNIQUE (email); */
+
+/* Adicionar tarefa na tabela tarefa_do_dia */
+INSERT INTO tarefas_do_dia (id_usuario, id_habito, titulo, concluida)
+VALUES (7, 1, 'Ler', false);
+
+/* Alterando o titulo da tarefa */
+UPDATE tarefas_do_dia 
+SET titulo='Ler 5 paginas'
+WHERE id_usuario=7;
+
+/* Excluindo a tarefa */
+DELETE FROM tarefas_do_dia
+WHERE id_usuario= 7
