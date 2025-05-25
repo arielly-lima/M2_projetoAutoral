@@ -64,3 +64,6 @@ ALTER TABLE "tarefas_do_dia" ADD FOREIGN KEY ("id_habito") REFERENCES "habitos" 
 
 ALTER TABLE "templates_metas" ADD FOREIGN KEY ("id_usuario") REFERENCES "usuario" ("id_usuario");
 
+/* assegurando que só exista 1 usuário com o mesmo email */
+ALTER TABLE usuario
+ADD CONSTRAINT unique_email UNIQUE (email);

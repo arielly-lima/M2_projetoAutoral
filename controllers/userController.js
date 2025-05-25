@@ -3,18 +3,25 @@ const pool = require('../config/db');
 //criar novo usuário
 exports.criarUsuario = async (req, res) => {
   const { nome, email, senha } = req.body;
-
-  const query = 'INSERT INTO usuario (nome, email, senha) VALUES ($1, $2, $3) RETURNING *';
-  const values = [nome, email, senha];
-
+  
   //estrutura do JavaScript usada para testar um bloco de código que pode dar erro.
   try {
-    const result = await pool.query(query, values);
-    const usuario = result.rows[0];
-    res.status(201).json(usuario);
-    
+    const existingUser = await pool.query('SELECT * FROM usuario WHERE email = $1', [email]);
+
+    if (existingUser.rows.length > 0) {
+      return res.status(400).json({ mensagem: 'Email já cadastrado' });
+    }
+
+    const result = await pool.query(
+      'INSERT INTO usuario (nome, email, senha) VALUES ($1, $2, $3) RETURNING *',
+      [nome, email, senha]
+    );
+
+     const novoUsuario = result.rows[0];
+    res.status(201).json(novoUsuario);
+  }
   //o que fazer se der erro
-  } catch (err) {
+  catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
