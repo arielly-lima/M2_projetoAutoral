@@ -306,7 +306,7 @@ Corpo da requisição:
 }
 ```
 ----
-#### **Usuários** (`api/tarefa`)
+#### **Tarefas** (`api/tarefa`)
 - **GET api/tarefa**
 Retorna todas as tarefas cadastradas.
 Corpo da requisição:
