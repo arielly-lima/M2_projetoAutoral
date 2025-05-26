@@ -171,9 +171,6 @@ ALTER TABLE "tarefas_do_dia" ADD FOREIGN KEY ("id_habito") REFERENCES "habitos" 
 ALTER TABLE "templates_metas" ADD FOREIGN KEY ("id_usuario") REFERENCES "usuario" ("id_usuario");
 ```
 
-
-### 3.1.1 BD e Models (Semana 5)
-*Descreva aqui os Models implementados no sistema web*
 ### 3.1.1 BD e Models (Semana 5)
 
 Nesta aplicação, os Models são responsáveis por acessar o banco de dados PostgreSQL de forma direta, utilizando comandos SQL por meio do módulo `pg`. Eles seguem o padrão da arquitetura MVC, mantendo separada a lógica de manipulação de dados.
@@ -264,9 +261,9 @@ A camada de Model é composta pelos arquivos `userModel.js` e `tarefaModel.js`, 
 
 ### 3.6. WebAPI e Endpoints (Semana 05)
 A WebAPI foi desenvolvida em Node.js utilizando Express. 
-Todas as rotas principais para cada API estão no arquivo `server.js`.
 
-**Exemplo de rota criada para users e tarefas:**
+**Rota criada para users e tarefas:**
+Presente no arquivo `server.js`
 ```javascript
 //carrega as rotas do userRoutes
 const userRoutes = require('./routes/userRoutes');
@@ -276,6 +273,7 @@ app.use('/api/users', userRoutes); //ativa a api/users/(rotas definida no userRo
 const tarefaRoutes = require('./routes/tarefaRoutes');
 app.use('/api/tarefa', tarefaRoutes); //ativa a api/tarefa/(rotas definida no tarefaRoutes)
 ```
+### Rotas para cada ação CRUD:
 
 #### **Usuários** (`api/users`)
 - **GET api/users**
@@ -343,10 +341,10 @@ http://localhost:3000/api/users ou http://localhost:3000/api/tarefa.
 ---
 Todos os endpoints retornam respostas no formato JSON e utilizam os códigos HTTP apropriados:
 
-``200`` (OK) para sucesso,
-``201`` (Created) para criação bem-sucedida,
-``400/404`` para erros de cliente,
-``500`` para falhas internas do servidor.
+``200`` (OK) para sucesso, <br>
+``201`` (Created) para criação bem-sucedida,  <br>
+``400/404`` para erros de cliente,  <br>
+``500`` para falhas internas do servidor.  <br>
 
 ### 3.7 Interface e Navegação (Semana 07)
 
