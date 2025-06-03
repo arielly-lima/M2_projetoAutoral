@@ -1,41 +1,23 @@
-const pool = require('../config/db');
+const usuarioModel = require('../models/userModel');
 
-//criar novo usuário
+// Criar novo usuário
 exports.criarUsuario = async (req, res) => {
   const { nome, email, senha } = req.body;
-  
-  //estrutura do JavaScript usada para testar um bloco de código que pode dar erro.
+
   try {
-    const existingUser = await pool.query('SELECT * FROM usuario WHERE email = $1', [email]);
-
-    if (existingUser.rows.length > 0) {
-      return res.status(400).json({ mensagem: 'Email já cadastrado' });
-    }
-
-    const result = await pool.query(
-      'INSERT INTO usuario (nome, email, senha) VALUES ($1, $2, $3) RETURNING *',
-      [nome, email, senha]
-    );
-
-     const novoUsuario = result.rows[0];
+    const novoUsuario = await usuarioModel.criarUsuario(nome, email, senha);
     res.status(201).json(novoUsuario);
-  }
-  //o que fazer se der erro
-  catch (err) {
-    res.status(500).json({ error: err.message });
+  } catch (err) {
+    res.status(400).json({ mensagem: err.message });
   }
 };
 
-//login usuario
+// Login do usuário
 exports.loginUsuario = async (req, res) => {
   const { email, senha } = req.body;
 
-  const query = 'SELECT * FROM usuario WHERE email = $1';
-  const values = [email];
-
   try {
-    const result = await pool.query(query, values);
-    const usuario = result.rows[0]; // pega o usuário do banco
+    const usuario = await usuarioModel.loginUsuario(email);
 
     if (!usuario || usuario.senha !== senha) {
       return res.status(401).json({ mensagem: 'Email ou senha inválidos' });
@@ -47,11 +29,11 @@ exports.loginUsuario = async (req, res) => {
   }
 };
 
-//listar usuários
+// Listar todos os usuários
 exports.listarUsuarios = async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM usuario');
-    res.json(result.rows);
+    const usuarios = await usuarioModel.listarUsuarios();
+    res.status(200).json(usuarios);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

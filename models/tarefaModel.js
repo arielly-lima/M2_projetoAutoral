@@ -35,8 +35,8 @@ async function excluirTarefa(id_tarefa) {
 }
 
 // Concluir ou desconcluir tarefa
-async function atualizarConclusao(id_tarefa, concluida) {
-  const query = `UPDATE tarefas_do_dia SET concluida = $1 WHERE id_tarefa = $2`;
+async function concluirTarefa(id_tarefa, concluida) {
+  const query = `UPDATE tarefas_do_dia SET concluida = $1 WHERE id_tarefa = $2 RETURNING *`;
   const values = [concluida, id_tarefa];
   const result = await pool.query(query, values);
   return result.rowCount;
@@ -47,5 +47,5 @@ module.exports = {
   listarTarefas,
   editarTarefa,
   excluirTarefa,
-  atualizarConclusao
+  concluirTarefa,
 };
