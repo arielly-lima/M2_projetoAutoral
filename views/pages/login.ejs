@@ -8,10 +8,6 @@
 <body>
   <h1>Login</h1>
 
-  <% if (mensagem) { %>
-    <p style="color: red;"><%= mensagem %></p>
-  <% } %>
-
   <form action="/login" method="POST">
     <label for="email">Email:</label>
     <input type="email" name="email" id="email" required>

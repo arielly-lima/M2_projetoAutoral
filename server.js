@@ -14,23 +14,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//tentativa de mostrar view login
+/* //Mostrar a view de login
 app.get('/', (req, res) => {
-  res.render('index');
-});
-
-// Rota para renderizar a página inicial (exemplo com EJS)
-app.get('/', (req, res) => {
-  res.render('login', {
-    title: 'Página Inicial',
-    message: 'Bem-vindo ao aplicativo com EJS, CSS e Controllers Assíncronos!'
-  });
-});
-
-/* // Exemplo: rota com EJS
-app.get('/users', async (req, res) => {
-  const tarefas = await Tarefa.findAll();
-  res.render('login.ejs', { tarefas });
+  res.render('pages/login');
 }); */
 
 //carrega as rotas do userRoutes

@@ -1,5 +1,6 @@
 // controllers para terefas_do_dia
-const pool = require('../models/tarefaModel');
+const tarefaModel = require('../models/tarefaModel');
+
 
 // Criar uma nova tarefa
 exports.criarTarefa = async (req, res) => {
