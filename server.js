@@ -23,6 +23,9 @@ app.use('/api/tarefa', tarefaRoutes); //ativa a api/tarefa/(rotas que defini no 
 const habitoRoutes = require('./routes/habitoRoutes');
 app.use('/api/habito', habitoRoutes);
 
+const interessesRoutes = require('./routes/interessesRoutes');
+app.use('/api/interesses', interessesRoutes);
+
 //mensagem de sucesso
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
