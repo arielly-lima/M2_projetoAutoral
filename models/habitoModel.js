@@ -9,16 +9,42 @@ async function criarHabito({id_usuario, titulo, descricao, frequencia_por_semana
 }
 
 //listar habitos
-async function listarHabito({id_usuario, titulo, descricao, frequencia_por_semana}) {
-    const result = await pool.query('SELECT * FROM tarefas_do_dia');
+async function listarHabitos() {
+  const result = await pool.query('SELECT * FROM habitos');
   return result.rows;
 }
 
-//Deletar habito
-//Ver habito
-//Editar habito
+// Deletar hábito pelo ID
+async function deletarHabito(id_habito) {
+  const result = await pool.query(
+    'DELETE FROM habitos WHERE id_habito = $1 RETURNING *',
+    [id_habito]
+  );
+  return result.rows[0]; // retorna o hábito deletado (ou undefined se não existir)
+}
 
+// Ver hábito por ID
+async function verHabito(id_habito) {
+  const result = await pool.query(
+    'SELECT * FROM habitos WHERE id_habito = $1',
+    [id_habito]
+  );
+  return result.rows[0]; // retorna o hábito encontrado
+}
+
+// Editar hábito (atualizar título, descrição, frequência)
+async function editarHabito(id_habito, titulo, descricao, frequencia_por_semana) {
+  const result = await pool.query(
+    'UPDATE habitos SET titulo = $1, descricao = $2, frequencia_por_semana = $3 WHERE id_habito = $4 RETURNING *',
+    [titulo, descricao, frequencia_por_semana, id_habito]
+  );
+  return result.rows[0]; // retorna o hábito atualizado
+}
 
 module.exports = {
+  deletarHabito,
+  listarHabitos,
+  verHabito,
+  editarHabito,
   criarHabito,
 };

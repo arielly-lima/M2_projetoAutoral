@@ -1,31 +1,65 @@
 const habitoModel = require('../models/habitoModel');
 
-//criar habito
+// Criar hábito
 exports.criarHabito = async (req, res) => {
-    try{
-    const { id_usuario, titulo, descricao, frequencia_por_semana } = req.body;
-
-    // Validação simples
-    if (!id_usuario || !titulo || !frequencia_por_semana) {
-      return res.status(400).json({ mensagem: 'Preencha todos os campos obrigatórios.' });
-    }
-
-    const novoHabito = await habitoModel.criarHabito(id_usuario, titulo, descricao, frequencia_por_semana);
-
-    res.status(201).json(novoHabito); // Retorna o hábito criado com status 201 (Created)
-  } catch (error) {
-    console.error('Erro ao criar hábito:', error);
-    res.status(500).json({ mensagem: 'Erro ao criar hábito.' });
+  const { id_usuario, titulo, descricao, frequencia_por_semana } = req.body;
+  try {
+    const novoHabito = await habitoModel.criarHabito({ id_usuario, titulo, descricao, frequencia_por_semana });
+    res.status(201).json(novoHabito);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
-}
+};
 
-/* //Listar habitos
+// Listar todos os hábitos
 exports.listarHabitos = async (req, res) => {
-    try{
-        
+  try {
+    const habitos = await habitoModel.listarHabitos();
+    res.status(200).json(habitos);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// Ver hábito específico
+exports.verHabito = async (req, res) => {
+  const { id_habito } = req.params;
+  try {
+    const habito = await habitoModel.verHabito(id_habito);
+    if (!habito) {
+      return res.status(404).json({ message: 'Hábito não encontrado' });
     }
-} */
+    res.status(200).json(habito);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
+// Deletar hábito
+exports.deletarHabito = async (req, res) => {
+  const { id_habito } = req.params;
+  try {
+    const habitoDeletado = await habitoModel.deletarHabito(id_habito);
+    if (!habitoDeletado) {
+      return res.status(404).json({ message: 'Hábito não encontrado' });
+    }
+    res.status(200).json({ message: 'Hábito deletado com sucesso' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
 
-
-
+// Editar hábito
+exports.editarHabito = async (req, res) => {
+  const { id_habito } = req.params;
+  const { titulo, descricao, frequencia_por_semana } = req.body;
+  try {
+    const habitoAtualizado = await habitoModel.editarHabito(id_habito, titulo, descricao, frequencia_por_semana);
+    if (!habitoAtualizado) {
+      return res.status(404).json({ message: 'Hábito não encontrado' });
+    }
+    res.status(200).json(habitoAtualizado);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
