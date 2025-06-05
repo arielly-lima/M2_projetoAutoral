@@ -5,22 +5,20 @@ const userController = require('../controllers/userController');
 
 // Página inicial
 router.get('/', (req, res) => {
-  res.render("pages/login");
+  res.render('pages/login', { erro: null });
 });
-
-// Nova rota para a tela de registro
-app.get('/register', (req, res) => {
-  res.render('pages/register');
-});
-
-
-// Criar usuário (POST /users)
-router.post('/', userController.criarUsuario);
-
-// Login usuário (POST /users/login)
-router.post('/login', userController.loginUsuario);
 
 // Listar usuários (GET /users)
 router.get('/', userController.listarUsuarios);
+
+// Página de registro (GET)
+router.get('/register', (req, res) => {
+   res.render('pages/register', { erro: null });
+});
+// Registro de novo usuário (POST)
+router.post('/register', userController.criarUsuario);
+
+// Login usuário (POST /users/login)
+router.post('/login', userController.loginUsuario);
 
 module.exports = router;

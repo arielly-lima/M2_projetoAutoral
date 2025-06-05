@@ -70,11 +70,11 @@ ALTER TABLE "templates_metas" ADD FOREIGN KEY ("id_usuario") REFERENCES "usuario
 /* ALTER TABLE usuario
 ADD CONSTRAINT unique_email UNIQUE (email); */
 
-/* Adicionar tarefa na tabela tarefa_do_dia */
+/* /* Adicionar tarefa na tabela tarefa_do_dia */
 INSERT INTO tarefas_do_dia (id_usuario, id_habito, titulo, concluida)
-VALUES (7, 1, 'Ler', false);
+VALUES (7, 1, 'Estudar ciencias', false); */
 
-/* Alterando o titulo da tarefa */
+/* /* Alterando o titulo da tarefa */
 UPDATE tarefas_do_dia 
 SET titulo='Ler 5 paginas'
 WHERE id_usuario=7;
@@ -86,4 +86,4 @@ WHERE id_usuario= 7;
 /* Alterando o titulo da tarefa */
 UPDATE tarefas_do_dia 
 SET titulo='Correr 5km'
-WHERE id_usuario= 4
+WHERE id_usuario= 4 */

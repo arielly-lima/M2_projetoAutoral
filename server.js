@@ -19,14 +19,9 @@ app.get('/', (req, res) => {
   res.render('pages/login');
 }); */
 
-/* // Nova rota para a tela de registro
-app.get('/register', (req, res) => {
-  res.render('pages/register');
-});
- */
 //carrega as rotas do userRoutes
 const userRoutes = require('./routes/userRoutes');
-app.use('/api/users', userRoutes); //ativa a api/users/(rotas que defini no userRoutes)
+app.use('/', userRoutes); //ativa a api/users/(rotas que defini no userRoutes)
 
 //carrega as rotas do tarefaRoutes
 const tarefaRoutes = require('./routes/tarefaRoutes');
@@ -37,7 +32,7 @@ const habitoRoutes = require('./routes/habitoRoutes');
 app.use('/api/habito', habitoRoutes);
 
 const interessesRoutes = require('./routes/interessesRoutes');
-app.use('/api/interesses', interessesRoutes);
+app.use('/interesses', interessesRoutes);
 
 //mensagem de sucesso
 app.listen(port, () => {

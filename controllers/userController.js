@@ -5,27 +5,33 @@ exports.criarUsuario = async (req, res) => {
   const { nome, email, senha } = req.body;
 
   try {
-    const novoUsuario = await usuarioModel.criarUsuario(nome, email, senha);
-    res.status(201).json(novoUsuario);
+    await usuarioModel.criarUsuario(nome, email, senha);
+    res.redirect('/'); // redireciona para a tela de login após o cadastro
   } catch (err) {
-    res.status(400).json({ mensagem: err.message });
+    res.status(400).render('register', { erro: err.message });
   }
 };
+
 
 // Login do usuário
 exports.loginUsuario = async (req, res) => {
   const { email, senha } = req.body;
 
   try {
-    const usuario = await usuarioModel.loginUsuario(email);
+    const usuario = await usuarioModel.buscarPorEmail(email);
 
-    if (!usuario || usuario.senha !== senha) {
-      return res.status(401).json({ mensagem: 'Email ou senha inválidos' });
+    if (!usuario) {
+      return res.status(401).render('pages/login', { erro: 'Usuário não encontrado' });
     }
 
-    res.status(200).json({ mensagem: 'Login realizado com sucesso', usuario });
+    if (usuario.senha !== senha) {
+      return res.status(401).render('pages/login', { erro: 'Senha incorreta' });
+    }
+
+    // Usuário autenticado com sucesso
+    res.redirect('/dashboard');
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).render('pages/login', { erro: 'Erro interno no servidor' });
   }
 };
 
@@ -38,3 +44,5 @@ exports.listarUsuarios = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+

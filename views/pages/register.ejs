@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Registrar</title>
   <link rel="stylesheet" href="/css/style.css" />
+ 
 </head>
 <body>
-  <main class="container">
-    <section class="login-card">
-      <h1>Registrar</h1>
-      <form action="/register" method="POST">
-        <label for="nome">Nome:</label>
-        <input type="text" name="nome" id="nome" required />
+  <div class="register-container">
+    <h1>Registrar novo usuário</h1>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required />
+    <% if (erro) { %>
+      <div class="popup"><%= erro %></div>
+    <% } %>
 
-        <label for="senha">Senha:</label>
-        <input type="password" name="senha" id="senha" required />
+    <form action="/register" method="POST">
+      <label for="nome">Nome:</label>
+      <input type="text" name="nome" id="nome" required>
 
-        <button type="submit">Registrar</button>
-      </form>
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" required>
 
-      <p class="register-prompt">
-        Já tem uma conta? <a href="/">Faça login</a>
-      </p>
-    </section>
-  </main>
+      <label for="senha">Senha:</label>
+      <input type="password" name="senha" id="senha" required>
+
+      <button type="submit">Registrar</button>
+    </form>
+
+    <div class="login-link">
+      Já tem conta? <a href="/login">Faça login</a>
+    </div>
+  </div>
 </body>
 </html>
