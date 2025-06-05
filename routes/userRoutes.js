@@ -8,6 +8,12 @@ router.get('/', (req, res) => {
   res.render("pages/login");
 });
 
+// Nova rota para a tela de registro
+app.get('/register', (req, res) => {
+  res.render('pages/register');
+});
+
+
 // Criar usuário (POST /users)
 router.post('/', userController.criarUsuario);
 

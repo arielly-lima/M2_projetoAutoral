@@ -19,6 +19,11 @@ app.get('/', (req, res) => {
   res.render('pages/login');
 }); */
 
+/* // Nova rota para a tela de registro
+app.get('/register', (req, res) => {
+  res.render('pages/register');
+});
+ */
 //carrega as rotas do userRoutes
 const userRoutes = require('./routes/userRoutes');
 app.use('/api/users', userRoutes); //ativa a api/users/(rotas que defini no userRoutes)

@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login - Habits App</title>
-  <link rel="stylesheet" href="/css/style.css"/>
+  <meta charset="UTF-8">
+  <title>Registrar</title>
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
   <main class="container">
     <section class="login-card">
-      <h1>Entrar</h1>
-      <form action="/login" method="POST">
+      <h1>Registrar</h1>
+      <form action="/register" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" required />
+
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required />
 
         <label for="senha">Senha:</label>
         <input type="password" name="senha" id="senha" required />
 
-        <button type="submit">Entrar</button>
+        <button type="submit">Registrar</button>
       </form>
 
       <p class="register-prompt">
-        Não tem uma conta?
-        <a href="/register">Registre-se aqui</a>
+        Já tem uma conta? <a href="/">Faça login</a>
       </p>
     </section>
   </main>
