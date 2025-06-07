@@ -3,31 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login</title>
+  <title>Registrar</title>
   <link rel="stylesheet" href="/css/style.css" />
-
+ 
 </head>
 <body>
-  <div class="login-container">
-    <h1>Login</h1>
+  <div class="register-container">
+    <h1>Registrar novo usuário</h1>
 
     <% if (erro) { %>
       <div class="popup"><%= erro %></div>
     <% } %>
 
-    <form action="/" method="POST">
+    <form action="/tarefas" method="GET">
+      <label for="nome">Nome:</label>
+      <input type="text" name="nome" id="nome" required>
+
       <label for="email">Email:</label>
       <input type="email" name="email" id="email" required>
 
       <label for="senha">Senha:</label>
       <input type="password" name="senha" id="senha" required>
 
-      <button type="submit">Entrar</button>
+      <button type="submit">Registrar</button>
     </form>
 
-    <div class="register-link">
-      Não tem uma conta? <a href="/register">Registre-se</a>
-    </div>
+   <!--  <div class="login-link">
+      Já tem conta? <a href="/login">Faça login</a>
+    </div> -->
   </div>
 </body>
 </html>

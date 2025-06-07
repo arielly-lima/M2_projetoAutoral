@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 
-// Página inicial
+/* // Página inicial
 router.get('/', (req, res) => {
   res.render('pages/login', { erro: null });
-});
+}); */
 
 // Listar usuários (GET /users)
 router.get('/', userController.listarUsuarios);
@@ -15,10 +15,11 @@ router.get('/', userController.listarUsuarios);
 router.get('/register', (req, res) => {
    res.render('pages/register', { erro: null });
 });
+
 // Registro de novo usuário (POST)
 router.post('/register', userController.criarUsuario);
 
 // Login usuário (POST /users/login)
-router.post('/login', userController.loginUsuario);
+router.post('/', userController.loginUsuario);
 
 module.exports = router;

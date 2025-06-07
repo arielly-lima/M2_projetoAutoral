@@ -3,6 +3,16 @@ const express = require('express');
 const router = express.Router();
 const tarefaController = require('../controllers/tarefaController');
 
+// Página inicial
+router.get('/tarefas', (req, res) => {
+  //view
+  res.render('pages/tarefas', { erro: null });
+});
+
+router.get('/criartarefa', (req, res) => {
+  res.render('pages/tarefas', { erro: null });
+});
+
 //listar tarefas (GET)
 router.get('/', tarefaController.listarTarefas);
 

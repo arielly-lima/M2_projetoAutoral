@@ -9,13 +9,13 @@
 </head>
 <body>
   <div class="register-container">
-    <h1>Registrar novo usuário</h1>
+    <h1>Criar Usuário</h1>
 
     <% if (erro) { %>
       <div class="popup"><%= erro %></div>
     <% } %>
 
-    <form action="/register" method="POST">
+    <form action="/tarefas" method="POST">
       <label for="nome">Nome:</label>
       <input type="text" name="nome" id="nome" required>
 
@@ -29,7 +29,7 @@
     </form>
 
     <div class="login-link">
-      Já tem conta? <a href="/login">Faça login</a>
+      Já tem conta? <a href="/">Faça login</a>
     </div>
   </div>
 </body>
