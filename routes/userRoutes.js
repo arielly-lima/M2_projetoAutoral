@@ -9,7 +9,10 @@ router.get('/', (req, res) => {
 }); */
 
 // Listar usuários (GET /users)
-router.get('/login', userController.listarUsuarios);
+router.get('/login', (req, res) => {
+  //view
+   res.render('pages/login', { erro: null });
+});
 
 // Página de registro (GET)
 router.get('/register', (req, res) => {
