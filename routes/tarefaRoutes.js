@@ -10,6 +10,7 @@ router.get('/tarefas', (req, res) => {
 });
 
 router.get('/criartarefa', (req, res) => {
+  //view
   res.render('pages/tarefas', { erro: null });
 });
 

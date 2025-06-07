@@ -6,12 +6,11 @@ exports.criarUsuario = async (req, res) => {
 
   try {
     await usuarioModel.criarUsuario(nome, email, senha);
-    res.redirect('/'); // redireciona para a tela de login após o cadastro
+    res.redirect('/login'); // redireciona para a tela de login após o cadastro
   } catch (err) {
     res.status(400).render('register', { erro: err.message });
   }
 };
-
 
 // Login do usuário
 exports.loginUsuario = async (req, res) => {
@@ -29,7 +28,8 @@ exports.loginUsuario = async (req, res) => {
     }
 
     // Usuário autenticado com sucesso
-    res.redirect('/criartarefa');
+    res.redirect('/tarefas');
+
   } catch (err) {
     res.status(500).render('pages/login', { erro: 'Erro interno no servidor' });
   }

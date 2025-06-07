@@ -9,10 +9,11 @@ router.get('/', (req, res) => {
 }); */
 
 // Listar usuários (GET /users)
-router.get('/', userController.listarUsuarios);
+router.get('/login', userController.listarUsuarios);
 
 // Página de registro (GET)
 router.get('/register', (req, res) => {
+  //view
    res.render('pages/register', { erro: null });
 });
 
@@ -20,6 +21,6 @@ router.get('/register', (req, res) => {
 router.post('/register', userController.criarUsuario);
 
 // Login usuário (POST /users/login)
-router.post('/', userController.loginUsuario);
+router.post('/login', userController.loginUsuario);
 
 module.exports = router;
