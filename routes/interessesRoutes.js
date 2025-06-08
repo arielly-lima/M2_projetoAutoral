@@ -15,26 +15,8 @@ router.get('/interesses', (req, res) => {
 });
 
 // Criar interesse (POST)
-router.post('/interesses', async (req, res) => {
-  try {
-    const id_usuario = req.session.usuario?.id;
+router.post('/interesses', interesseController.criarInteresse);
 
-    if (!id_usuario) {
-      return res.redirect('/login');
-    }
-
-    const { hobbies, filmes, series, musicas } = req.body;
-
-    await interesseController.criarInteresse({ id_usuario, hobbies, filmes, series, musicas });
-
-    res.redirect('/dashboard');
-  } catch (err) {
-    res.render('pages/interesses', {
-      erro: 'Erro ao salvar interesse.',
-      id_usuario: req.session.usuario.id
-    });
-  }
-});
 
 // Deletar interesse
 router.delete('/:id_interesse', interesseController.apagarInteresse);
