@@ -8,11 +8,11 @@ router.get('/', (req, res) => {
   res.render('pages/login', { erro: null });
 }); */
 
-/* // Listar usuários (GET /users)
+// Listar usuários (GET /users)
 router.get('/login', (req, res) => {
   //view
    res.render('pages/login', { erro: null });
-}); */
+}); 
 
 // Página de registro (GET)
 router.get('/register', (req, res) => {

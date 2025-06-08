@@ -25,7 +25,7 @@ app.use('/', userRoutes); //ativa a api/users/(rotas que defini no userRoutes)
 
 //carrega as rotas do tarefaRoutes
 const tarefaRoutes = require('./routes/tarefaRoutes');
-app.use('/tarefas', tarefaRoutes); //ativa a /tarefa/(rotas que defini no tarefaRoutes)
+app.use('/', tarefaRoutes); //ativa a /tarefa/(rotas que defini no tarefaRoutes)
 
 //carrega as rotas de habitoRoutes
 const habitoRoutes = require('./routes/habitoRoutes');
