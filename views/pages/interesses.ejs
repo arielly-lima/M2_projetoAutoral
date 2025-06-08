@@ -11,22 +11,19 @@
 </head>
 <body>
     <div class="interesses-container">
-        <h1>Coisas favoritas</h1>
-    <% if (erro) { %>
-      <div class="popup"><%= erro %></div>
-    <% } %>
+       <h1>Cadastro de Interesse</h1>
 
-     <form action="/novointeresse" method="POST">
-      <label for="nome">Nome:</label>
-      <input type="text" name="nome" id="nome" required>
+<% if (erro) { %>
+  <p style="color: red"><%= erro %></p>
+<% } %>
 
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email" required>
+<form action="/novointeresse" method="POST">
+  <input type="text" name="nome" placeholder="Nome" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="text" name="interesse" placeholder="Interesse" required>
+  <button type="submit">Enviar</button>
+</form>
 
-      <label for="senha">Senha:</label>
-      <input type="password" name="senha" id="senha" required>
-
-      <button type="submit">Registrar</button>
     </form>
 
 </body>

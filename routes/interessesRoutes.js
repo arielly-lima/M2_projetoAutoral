@@ -2,19 +2,18 @@ const express = require('express');
 const router = express.Router();
 const interesseController = require('../controllers/interessesController');
 
-//Criar interesse
-router.post('/novointeresse', (req, res) => {
-  //view
-   res.render('pages/interesses', { erro: null });
+// Página de formulário para novo interesse (GET)
+router.get('/novointeresse', (req, res) => {
+  res.render('pages/interesses', { erro: null });
 });
 
-// Criar interesse
+// Criar interesse (POST)
 router.post('/novointeresse', interesseController.criarInteresse);
 
-// Listar interesses
+// Listar interesses (GET)
 router.get('/interesses', interesseController.listarInteresses);
 
-// Deletar interesse
+// Deletar interesse (DELETE)
 router.delete('/:id_interesse', interesseController.apagarInteresse);
 
 module.exports = router;

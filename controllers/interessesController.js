@@ -8,6 +8,7 @@ exports.criarInteresse = async (req, res) => {
     const novoInteresse = await interesseModel.criarInteresse({id_usuario, hobbies, filmes, series, musicas,
 });
     res.status(201).json(novoInteresse);
+    
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
