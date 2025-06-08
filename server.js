@@ -1,8 +1,16 @@
 const express = require('express');
+const session = require('express-session');
+const app = express();
+
+app.use(session({
+  secret: 'segredo_super_secreto', // pode ser qualquer string
+  resave: false,
+  saveUninitialized: false
+}));
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const app = express();
 const port = 3001;
 app.use(cors());
 app.use(bodyParser.json());

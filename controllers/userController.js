@@ -8,7 +8,7 @@ exports.criarUsuario = async (req, res) => {
     await usuarioModel.criarUsuario(nome, email, senha);
     res.redirect('/login'); // redireciona para a tela de login após o cadastro
   } catch (err) {
-    res.status(400).render('register', { erro: err.message });
+    res.status(400).render('pages/register', { erro: err.message }); // corrigido
   }
 };
 
@@ -27,10 +27,17 @@ exports.loginUsuario = async (req, res) => {
       return res.status(401).render('pages/login', { erro: 'Senha incorreta' });
     }
 
-    // Usuário autenticado com sucesso
-    res.redirect('/novointeresse');
+    //Corrigir: salvar sessão ANTES de redirecionar
+    req.session.usuario = {
+      id: usuario.id,
+      nome: usuario.nome
+    };
+
+    //Agora redireciona com a sessão salva
+    res.redirect('/interesses');
 
   } catch (err) {
+    console.error('Erro no login:', err); // <-- veja o erro real
     res.status(500).render('pages/login', { erro: 'Erro interno no servidor' });
   }
 };
@@ -44,5 +51,3 @@ exports.listarUsuarios = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-
-

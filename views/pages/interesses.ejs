@@ -11,20 +11,31 @@
 </head>
 <body>
     <div class="interesses-container">
-       <h1>Cadastro de Interesse</h1>
+       <h1>Minhas coisas favoritas</h1>
+       <h4>Antes de manter habitos, lembre-se do porque você os criou</h4>
 
-<% if (erro) { %>
-  <p style="color: red"><%= erro %></p>
-<% } %>
+    <% if (erro) { %>
+      <div class="popup"><%= erro %></div>
+    <% } %>
 
-<form action="/novointeresse" method="POST">
-  <input type="text" name="nome" placeholder="Nome" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <input type="text" name="interesse" placeholder="Interesse" required>
-  <button type="submit">Enviar</button>
+<form action="/interesses" method="POST">
+  <input type="hidden" name="id_usuario" value="<%= id_usuario %>">
+
+  <label for="hobbies">Hobbies:</label>
+  <input type="text" name="hobbies" id="hobbies" required>
+
+  <label for="filmes">Filmes:</label>
+  <input type="text" name="filmes" id="filmes" required>
+
+  <label for="series">Séries:</label>
+  <input type="text" name="series" id="series" required>
+
+  <label for="musicas">Músicas:</label>
+  <input type="text" name="musicas" id="musicas" required>
+
+  <button type="submit">Salvar</button>
 </form>
 
-    </form>
 
 </body>
 </html>
