@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>interesses</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="interesses-container">
+        <h1>Coisas favoritas</h1>
+    <% if (erro) { %>
+      <div class="popup"><%= erro %></div>
+    <% } %>
+
+     <form action="/novointeresse" method="POST">
+      <label for="nome">Nome:</label>
+      <input type="text" name="nome" id="nome" required>
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="senha">Senha:</label>
+      <input type="password" name="senha" id="senha" required>
+
+      <button type="submit">Registrar</button>
+    </form>
+
+</body>
+</html>
