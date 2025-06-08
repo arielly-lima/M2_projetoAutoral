@@ -3,10 +3,10 @@ const router = express.Router();
 const interesseController = require('../controllers/interessesController');
 
 // Criar interesse
-router.post('/', interesseController.criarInteresse);
+router.post('/novointeresses', interesseController.criarInteresse);
 
 // Listar interesses
-router.get('/', interesseController.listarInteresses);
+router.get('/interesses', interesseController.listarInteresses);
 
 // Deletar interesse
 router.delete('/:id_interesse', interesseController.apagarInteresse);

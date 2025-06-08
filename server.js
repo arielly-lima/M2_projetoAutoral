@@ -32,7 +32,7 @@ const habitoRoutes = require('./routes/habitoRoutes');
 app.use('/habito', habitoRoutes);
 
 const interessesRoutes = require('./routes/interessesRoutes');
-app.use('/interesses', interessesRoutes);
+app.use('/', interessesRoutes);
 
 //mensagem de sucesso
 app.listen(port, () => {

@@ -28,7 +28,7 @@ exports.loginUsuario = async (req, res) => {
     }
 
     // Usuário autenticado com sucesso
-    res.redirect('/tarefas');
+    res.redirect('/novointeresse');
 
   } catch (err) {
     res.status(500).render('pages/login', { erro: 'Erro interno no servidor' });
