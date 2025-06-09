@@ -5,8 +5,14 @@ const tarefaController = require('../controllers/tarefaController');
 
 // Página inicial
 router.get('/tarefas', (req, res) => {
+  const id_usuario = req.session?.usuario?.id_usuario || null;
+  const id_habito = null;
   //view
-  res.render('pages/tarefas', { erro: null });
+  res.render('pages/tarefas', {
+    erro: null,
+    id_usuario,
+    id_habito
+  });
 });
 
 router.get('/criartarefa', (req, res) => {
@@ -18,7 +24,7 @@ router.get('/criartarefa', (req, res) => {
 router.get('/', tarefaController.listarTarefas);
 
 // Criar tarefas (POST)
-router.post('/', tarefaController.criarTarefa);
+router.post('/tarefas', tarefaController.criarTarefa);
 
 //editar tarefas (PUT)
 router.put('/:id_tarefa', tarefaController.editarTarefa);

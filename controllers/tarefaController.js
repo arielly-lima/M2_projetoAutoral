@@ -1,7 +1,6 @@
 // controllers para terefas_do_dia
 const tarefaModel = require('../models/tarefaModel');
 
-
 // Criar uma nova tarefa
 exports.criarTarefa = async (req, res) => {
    const { id_usuario, id_habito, titulo, concluida } = req.body;

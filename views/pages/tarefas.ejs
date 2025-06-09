@@ -1,33 +1,80 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Registrar</title>
+  <title>Minhas Tarefas</title>
   <link rel="stylesheet" href="/css/style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap" rel="stylesheet">
-
 </head>
 <body>
-  <div class="tarefas-container">
-    <h1>Minhas tarefas</h1>
+  <div class="interesses-container">
+    <h1>📋 Minhas Tarefas</h1>
+    <h4>Crie pequenas metas diárias</h4>
 
     <% if (erro) { %>
       <div class="popup"><%= erro %></div>
     <% } %>
 
-    <form action="/tarefas" method="GET">
-      <label for="nome">Nome:</label>
-      <input type="text" name="nome" id="nome" required>
+    <form id="form-tarefa">
+      <input type="hidden" name="id_usuario" value="<%= id_usuario || '' %>">
+      <input type="hidden" name="id_habito" value="<%= id_habito || '' %>">
 
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email" required>
+      <div class="grid">
+        <div class="card">
+          <div class="emoji">📝</div>
+          <label for="titulo">Nova Tarefa</label>
+          <input type="text" name="titulo" id="titulo" placeholder="Ex: Ler 10 páginas" required />
+        </div>
+      </div>
 
-      <label for="senha">Senha:</label>
-      <input type="password" name="senha" id="senha" required>
-
-      <button type="submit">Registrar</button>
+      <button type="submit">Adicionar</button>
     </form>
+
+    <div id="tarefas-container" class="tarefas-grid">
+      <!-- Cartões de tarefas inseridos via JS -->
+    </div>
   </div>
+
+  <script>
+    async function carregarTarefas() {
+      const resposta = await fetch('/tarefas');
+      const tarefas = await resposta.json();
+      const container = document.getElementById('tarefas-container');
+      container.innerHTML = '';
+
+      tarefas.forEach(tarefa => {
+        const card = document.createElement('div');
+        card.className = 'tarefa-card';
+        card.innerHTML = `
+          <div class="emoji">✅</div>
+          <p>${tarefa.titulo}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    document.getElementById('form-tarefa').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const dados = {
+        id_usuario: form.id_usuario.value,
+        id_habito: form.id_habito.value,
+        titulo: form.titulo.value,
+        concluida: false
+      };
+
+      await fetch('/tarefas', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+      });
+
+      form.reset();
+      carregarTarefas();
+    });
+
+    carregarTarefas();
+  </script>
 </body>
 </html>
