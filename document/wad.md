@@ -347,10 +347,9 @@ Todos os endpoints retornam respostas no formato JSON e utilizam os códigos HTT
 ``500`` para falhas internas do servidor.  <br>
 
 ### 3.7 Interface e Navegação (Semana 07)
+Na semana 7 de desenvolvimento do projeto Habits, foi iniciada a construção do frontend da aplicação, através dos views. Ao todo, nessa primeira entrega de views funcionais conectadas ao backend, foram feitas 4 telas principais, de acordo com o fluxo do usuário no website: Tela de login (para usuários já cadastradoss), Tela de registro (para novos usuários), Tela de interesses (guardar interesses dos usuários) e Tela de tarefas (criar, editar e excluir tarefas). 
+#### Tela de Login
 
-*Descreva e ilustre aqui o desenvolvimento do frontend do sistema web, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
-
----
 
 ## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
 
