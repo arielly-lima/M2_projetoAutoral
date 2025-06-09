@@ -4,18 +4,22 @@ const interesseModel = require('../models/interessesModel');
 exports.criarInteresse = async (req, res) => {
   console.log("Sessão atual:", req.session); // <-- Coloque aqui dentro!
 
-  const id_usuario = req.session.usuario?.id;
+  const id_usuario = req.session.usuario?.id_usuario;
+  
   console.log("ID do usuário logado:", id_usuario);
 
   if (!id_usuario) {
-    return res.redirect('/login');
+    return res.redirect('/tarefas');
   }
 
   const { hobbies, filmes, series, musicas } = req.body;
+  console.log("Dados do formulário:", req.body);
 
   try {
     await interesseModel.criarInteresse({ id_usuario, hobbies, filmes, series, musicas });
-    res.redirect('/dashboard');
+    res.redirect('/tarefas'); 
+/*     res.send('Interesse salvo com sucesso!'); */
+
   } catch (err) {
     console.error('Erro ao criar interesse:', err);
     res.render('pages/interesses', {

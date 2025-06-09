@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Baloo 2', cursive;
-  background: linear-gradient(to right, #6a11cb, #2575fc);
+  background: linear-gradient(to right, #8dd86a, #6de037);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,9 +48,9 @@ input[type="password"] {
   font-size: 16px;
 }
 
-button {
-  background-color: #2575fc;
-  color: white;
+button[type="submit"] {
+  background-color: #46e350;
+  color: rgb(0, 0, 0);
   padding: 12px;
   font-size: 16px;
   border: none;
@@ -60,7 +60,7 @@ button {
 }
 
 button:hover {
-  background-color: #1a5ed9;
+  background-color: #0fc81b;
 }
 
 .popup {
@@ -94,3 +94,62 @@ button:hover {
 .register-link a:hover {
   text-decoration: underline;
 }
+
+ body {
+      font-family: 'Baloo 2', cursive;
+      background-color: #fefefe;
+      padding: 2rem;
+      color: #333;
+    }
+
+    .interesses-container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1, h4 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .emoji {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card label {
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+
+    .card input {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 0.4rem;
+      width: 100%;
+    }
+    .popup {
+      background-color: #ffdddd;
+      border-left: 6px solid #f44336;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+    }

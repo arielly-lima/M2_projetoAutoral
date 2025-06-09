@@ -1,40 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>interesses</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interesses</title>
   <link rel="stylesheet" href="/css/style.css" />
-  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap" rel="stylesheet">
-
 </head>
 <body>
-    <div class="interesses-container">
-       <h1>Minhas coisas favoritas</h1>
-       <h4>Antes de manter habitos, lembre-se do porque você os criou</h4>
+  <div class="interesses-container">
+    <h1>Minhas coisas favoritas</h1>
+    <h4>Antes de manter hábitos, lembre-se do porquê você começou</h4>
 
     <% if (erro) { %>
       <div class="popup"><%= erro %></div>
     <% } %>
 
-<form action="/interesses" method="POST">
+    <form action="/interesses" method="POST">
+      <div class="grid">
+        <div class="card">
+          <div class="emoji">🎨</div>
+          <label for="hobbies">Hobbies</label>
+          <input type="text" name="hobbies" id="hobbies" required>
+        </div>
 
-  <label for="hobbies">Hobbies:</label>
-  <input type="text" name="hobbies" id="hobbies" required>
+        <div class="card">
+          <div class="emoji">🎬</div>
+          <label for="filmes">Filmes</label>
+          <input type="text" name="filmes" id="filmes" required>
+        </div>
 
-  <label for="filmes">Filmes:</label>
-  <input type="text" name="filmes" id="filmes" required>
+        <div class="card">
+          <div class="emoji">📺</div>
+          <label for="series">Séries</label>
+          <input type="text" name="series" id="series" required>
+        </div>
 
-  <label for="series">Séries:</label>
-  <input type="text" name="series" id="series" required>
+        <div class="card">
+          <div class="emoji">🎧</div>
+          <label for="musicas">Músicas</label>
+          <input type="text" name="musicas" id="musicas" required>
+        </div>
+      </div>
 
-  <label for="musicas">Músicas:</label>
-  <input type="text" name="musicas" id="musicas" required>
-
-  <button type="submit">Salvar</button>
-</form>
-
-
+      <button type="submit">Salvar</button>
+    </form>
+  </div>
 </body>
 </html>

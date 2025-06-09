@@ -28,11 +28,10 @@ exports.loginUsuario = async (req, res) => {
     }
 
     //Corrigir: salvar sessão ANTES de redirecionar
-    req.session.usuario = {
-    id: usuario.id,
-    nome: usuario.nome
-  };
-
+  req.session.usuario = {
+  id_usuario: usuario.id_usuario, // <-- precisa bater com o nome real do campo no banco!
+  nome: usuario.nome
+};
 
     //Agora redireciona com a sessão salva
     res.redirect('/interesses');
