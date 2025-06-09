@@ -356,6 +356,7 @@ Na semana 7 de desenvolvimento do projeto Habits, foi iniciada a construção do
 <img src= "../assets/assets_wad/login.png"/><br>
 <sup>Fonte: Material produzido pelo autor (2025).<br>
 </div>
+Nessa tela o usuário já registrado pode realizar seu login e ter acesso às funcionalidades do website.<br>
 
 #### Tela de Registro
 
@@ -364,6 +365,7 @@ Na semana 7 de desenvolvimento do projeto Habits, foi iniciada a construção do
 <img src= "../assets/assets_wad/register.png"/><br>
 <sup>Fonte: Material produzido pelo autor (2025).<br>
 </div>
+Nessa tela, o usuário que ainda não possui login pode realizar seu registro, passando a integrar o banco de dados.<br>
 
 #### Tela de Interesses
 
@@ -372,6 +374,7 @@ Na semana 7 de desenvolvimento do projeto Habits, foi iniciada a construção do
 <img src= "../assets/assets_wad/interesses.png"/><br>
 <sup>Fonte: Material produzido pelo autor (2025).<br>
 </div>
+Nessa tela o usuário poderá registrar traços de sua personalidade, adicionando coisas das quais gosta e tem como favoritas. Esses dados também são armazenados no banco e relacionadas a cada usuário específico.
 
 #### Tela de Tarefas
 
@@ -380,6 +383,7 @@ Na semana 7 de desenvolvimento do projeto Habits, foi iniciada a construção do
 <img src= "../assets/assets_wad/tarefas.png"/><br>
 <sup>Fonte: Material produzido pelo autor (2025).<br>
 </div>
+Nessa tela o usuário poderá acompanhar as tarefas existentes, podendo editá-las, como concluídas ou não, além de poder excluí-las. A funcionalidade de adicionar novas tarefas está em processo de aprimoramento. 
 
 ## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
 
