@@ -347,9 +347,39 @@ Todos os endpoints retornam respostas no formato JSON e utilizam os códigos HTT
 ``500`` para falhas internas do servidor.  <br>
 
 ### 3.7 Interface e Navegação (Semana 07)
-Na semana 7 de desenvolvimento do projeto Habits, foi iniciada a construção do frontend da aplicação, através dos views. Ao todo, nessa primeira entrega de views funcionais conectadas ao backend, foram feitas 4 telas principais, de acordo com o fluxo do usuário no website: Tela de login (para usuários já cadastradoss), Tela de registro (para novos usuários), Tela de interesses (guardar interesses dos usuários) e Tela de tarefas (criar, editar e excluir tarefas). 
+Na semana 7 de desenvolvimento do projeto Habits, foi iniciada a construção do frontend da aplicação, através dos views. Ao todo, nessa primeira entrega de views funcionais conectadas ao backend, foram feitas 4 telas principais, de acordo com o fluxo do usuário no website: Tela de login (para usuários já cadastradoss), Tela de registro (para novos usuários), Tela de interesses (guardar interesses dos usuários) e Tela de tarefas (criar, editar e excluir tarefas). <br>
+
 #### Tela de Login
 
+<div align="center">
+<sup> Figura 4: Tela de Login</sup>
+<img src= "../assets/assets_wad/login.png"/><br>
+<sup>Fonte: Material produzido pelo autor (2025).<br>
+</div>
+
+#### Tela de Registro
+
+<div align="center">
+<sup> Figura 5: Tela de Registro</sup>
+<img src= "../assets/assets_wad/register.png"/><br>
+<sup>Fonte: Material produzido pelo autor (2025).<br>
+</div>
+
+#### Tela de Interesses
+
+<div align="center">
+<sup> Figura 6: Tela de Interesses</sup>
+<img src= "../assets/assets_wad/interesses.png"/><br>
+<sup>Fonte: Material produzido pelo autor (2025).<br>
+</div>
+
+#### Tela de Tarefas
+
+<div align="center">
+<sup> Figura 7: Tela de Tarefas</sup>
+<img src= "../assets/assets_wad/tarefas.png"/><br>
+<sup>Fonte: Material produzido pelo autor (2025).<br>
+</div>
 
 ## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
 
