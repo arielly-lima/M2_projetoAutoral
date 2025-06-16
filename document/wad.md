@@ -388,20 +388,47 @@ Nessa tela o usuário poderá acompanhar as tarefas existentes, podendo editá-l
 ## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
 
 ### 4.1 Demonstração do Sistema Web (Semana 8)
+#### Link com vídeo de demonstração da plataforma: https://drive.google.com/file/d/1Awol8oRUc-P9HtUiEhQdo077z8zuj-68/view?usp=sharing
 
-*VIDEO: Insira o link do vídeo demonstrativo nesta seção*
-*Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+Na semana 8 de desenvolvimento do projeto Habits, foi finalizada a entrega do MVP da aplicação, contendo as funcionalidades de login, ou criação do usuário, adição de interesses e criação de atividades, todas conectadas ao backend através d erotas API. <br>
+
+#### Tela de Login
+
+<div align="center">
+<sup> Figura 5: Tela de Login</sup>
+<img src= "../assets/assets_wad/login.png"/><br>
+<sup>Fonte: Material produzido pelo autor (2025).<br>
+</div>
+Nessa tela o usuário já registrado pode realizar seu login e ter acesso às funcionalidades do website.<br>
+
+#### Tela de Registro
+
+<div align="center">
+<sup> Figura 6: Tela de Registro</sup>
+<img src= "../assets/assets_wad/register.png"/><br>
+<sup>Fonte: Material produzido pelo autor (2025).<br>
+</div>
+Nessa tela, o usuário que ainda não possui login pode realizar seu registro, passando a integrar o banco de dados.<br>
+
+#### Tela de Interesses
+
+<div align="center">
+<sup> Figura 7: Tela de Interesses</sup>
+<img src= "../assets/assets_wad/interesses.png"/><br>
+<sup>Fonte: Material produzido pelo autor (2025).<br>
+</div>
+Nessa tela o usuário poderá registrar traços de sua personalidade, adicionando coisas das quais gosta e tem como favoritas. Esses dados também são armazenados no banco e relacionadas a cada usuário específico.
+
+#### Tela de Tarefas
+
+<div align="center">
+<sup> Figura 8: Tela de Tarefas</sup>
+<img src= "../assets/assets_wad/tarefas2.png"/><br>
+<sup>Fonte: Material produzido pelo autor (2025).<br>
+</div>
+Nessa tela o usuário poderá acompanhar as tarefas existentes, podendo editá-las, como concluídas ou não, além de poder excluí-las e criar novas tarefas.
 
 ### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
+Como entrega final do projeto, o MVP que havia sido planejado inicialmente foi desenvolvido com sucesso, mas algumas funcionalidades como a personalização do perfil do usuário ainda estão sendo aprimoradas e novas atualizações devem ser desenvlvidas futuramente, para que o produto mínimo viável seja mais efetivo e, de fato, atenda às necessidades dos usuários.
 
-*Indique pontos fortes e pontos a melhorar de maneira geral.*
-*Relacione também quaisquer outras ideias que você tenha para melhorias futuras.*
-
-
-
-## <a name="c5"></a>5. Referências
-
-_Incluir as principais referências de seu projeto, para que o leitor possa consultar caso ele se interessar em aprofundar._<br>
-
----
 ---
