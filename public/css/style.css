@@ -514,3 +514,35 @@ ul#lista-tarefas li button:last-of-type:hover {
 .titulo-preto {
   color: #1f7aec; 
 }
+
+ /* Layout básico com sidebar */
+    body {
+      display: flex;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+    }
+    .content {
+      flex: 1;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .sidebar h2 {
+      margin-top: 0;
+    }
+    .feito {
+      text-decoration: line-through;
+      color: #888;
+    }
+    button {
+      margin-left: 10px;
+    }
+
+    .user-box {
+  background: #eef3f7;
+  border: 1px solid #ccc;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}

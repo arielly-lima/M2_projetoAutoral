@@ -16,16 +16,16 @@ exports.criarTarefa = async (req, res) => {
 
 // Listar todas as tarefas
 exports.listarTarefas = async (req, res) => {
-    const id_usuario = req.session.usuario.id_usuario; // pega o id do usuário logado
-
-   try {
-      const tarefas = await tarefaModel.listarTarefas(id_usuario);
-      res.render('pages/tarefas', { tarefas });
-   /*    res.status(200).json(tarefas); */
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
+  try {
+    const id_usuario = req.session.usuario.id_usuario;
+    const tarefas = await tarefaModel.listarTarefas(id_usuario);
+    // Enviar usuario junto para a view
+    res.render('pages/tarefas', { tarefas, usuario: req.session.usuario });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
+
 
 // Editar uma tarefa
 exports.editarTarefa = async (req, res) => {

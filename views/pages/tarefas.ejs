@@ -6,39 +6,50 @@
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-  <h1>Tarefas do Dia</h1>
 
-  <% if (typeof erro !== 'undefined' && erro) { %>
-    <p style="color: red;"><%= erro %></p>
-  <% } %>
+<div class="content">
 
-  <form id="form-criar">
-    <label for="titulo">Título:</label>
-    <input type="text" id="titulo" name="titulo" required />
+ <body>
+  <div class="sidebar">
+      <div class="content">
+    <div class="user-box">
+      <h2>Olá, <%= usuario.nome %>!</h2>
+      <p><strong>Email:</strong> <%= usuario.email %></p>
+      <p><strong>Total de tarefas:</strong> <%= tarefas.length %></p>
+    </div>
+  </div>
 
-    <label for="concluida">Concluída?</label>
-    <select id="concluida" name="concluida">
-      <option value="false">Não</option>
-      <option value="true">Sim</option>
-    </select>
+    <% if (typeof erro !== 'undefined' && erro) { %>
+      <p style="color: red;"><%= erro %></p>
+    <% } %>
 
-    <button type="submit">Adicionar Tarefa</button>
-  </form>
+    <form id="form-criar">
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" name="titulo" required />
 
-  <hr/>
+      <label for="concluida">Concluída?</label>
+      <select id="concluida" name="concluida">
+        <option value="false">Não</option>
+        <option value="true">Sim</option>
+      </select>
 
-  <h2>Lista de Tarefas</h2>
-  <ul id="lista-tarefas">
-    <% tarefas.forEach(tarefa => { %>
-      <li class="<%= tarefa.concluida ? 'feito' : '' %>">
-        <span><%= tarefa.titulo %></span>
-        <button onclick="marcarConcluida('<%= tarefa.id_tarefa %>, <%= !tarefa.concluida %>')">
-          <%= tarefa.concluida ? 'Desfazer' : 'Concluir' %>
-        </button>
-        <button onclick="excluirTarefa('<%= tarefa.id_tarefa %>')">Excluir</button>
-      </li>
-    <% }) %>
-  </ul>
+      <button type="submit">Adicionar Tarefa</button>
+    </form>
+
+    <hr/>
+    <h2>Lista de Tarefas</h2>
+    <ul id="lista-tarefas">
+      <% tarefas.forEach(tarefa => { %>
+        <li class="<%= tarefa.concluida ? 'feito' : '' %>">
+          <span><%= tarefa.titulo %></span>
+          <button onclick="marcarConcluida('<%= tarefa.id_tarefa %>, <%= !tarefa.concluida %>')">
+            <%= tarefa.concluida ? 'Desfazer' : 'Concluir' %>
+          </button>
+          <button onclick="excluirTarefa('<%= tarefa.id_tarefa %>')">Excluir</button>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
 
   <script>
     async function marcarConcluida(id, novoStatus) {
@@ -75,7 +86,7 @@
       });
 
       e.target.reset();
-      location.reload(); // recarrega para ver a nova tarefa
+      location.reload();
     });
   </script>
 </body>
