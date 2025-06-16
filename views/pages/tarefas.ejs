@@ -8,14 +8,11 @@
 <body>
   <h1>Tarefas do Dia</h1>
 
-  <% if (erro) { %>
+  <% if (typeof erro !== 'undefined' && erro) { %>
     <p style="color: red;"><%= erro %></p>
   <% } %>
 
   <form id="form-criar">
-    <input type="hidden" name="id_usuario" value="<%= id_usuario %>" />
-    <input type="hidden" name="id_habito" value="<%= id_habito %>" />
-    
     <label for="titulo">Título:</label>
     <input type="text" id="titulo" name="titulo" required />
 
@@ -31,52 +28,40 @@
   <hr/>
 
   <h2>Lista de Tarefas</h2>
-  <ul id="lista-tarefas"></ul>
+  <ul id="lista-tarefas">
+    <% tarefas.forEach(tarefa => { %>
+      <li class="<%= tarefa.concluida ? 'feito' : '' %>">
+        <span><%= tarefa.titulo %></span>
+        <button onclick="marcarConcluida('<%= tarefa.id_tarefa %>, <%= !tarefa.concluida %>')">
+          <%= tarefa.concluida ? 'Desfazer' : 'Concluir' %>
+        </button>
+        <button onclick="excluirTarefa('<%= tarefa.id_tarefa %>')">Excluir</button>
+      </li>
+    <% }) %>
+  </ul>
 
   <script>
-    async function carregarTarefas() {
-      const resposta = await fetch('/');
-      const tarefas = await resposta.json();
-      const lista = document.getElementById('lista-tarefas');
-      lista.innerHTML = '';
-
-      tarefas.forEach(tarefa => {
-        const li = document.createElement('li');
-        li.className = tarefa.concluida ? 'feito' : '';
-        li.innerHTML = `
-          <span>${tarefa.titulo}</span>
-          <button onclick="marcarConcluida(${tarefa.id_tarefa}, ${!tarefa.concluida})">
-            ${tarefa.concluida ? 'Desfazer' : 'Concluir'}
-          </button>
-          <button onclick="excluirTarefa(${tarefa.id_tarefa})">Excluir</button>
-        `;
-        lista.appendChild(li);
-      });
-    }
-
     async function marcarConcluida(id, novoStatus) {
-      await fetch(`/${id}/concluida`, {
+      await fetch(`/tarefas/${id}/concluida`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_tarefa: id, concluida: novoStatus })
       });
-      carregarTarefas();
+      location.reload();
     }
 
     async function excluirTarefa(id) {
-      await fetch(`/${id}`, {
+      await fetch(`/tarefas/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_tarefa: id })
       });
-      carregarTarefas();
+      location.reload();
     }
 
     document.getElementById('form-criar').addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const id_usuario = document.querySelector('[name="id_usuario"]').value;
-      const id_habito = document.querySelector('[name="id_habito"]').value;
       const titulo = document.getElementById('titulo').value;
       const concluida = document.getElementById('concluida').value;
 
@@ -84,19 +69,14 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          id_usuario,
-          id_habito,
           titulo,
           concluida: concluida === 'true'
         })
       });
 
       e.target.reset();
-      carregarTarefas();
+      location.reload(); // recarrega para ver a nova tarefa
     });
-
-    // Carregar tarefas ao iniciar
-    carregarTarefas();
   </script>
 </body>
 </html>

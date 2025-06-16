@@ -3,10 +3,10 @@ const tarefaModel = require('../models/tarefaModel');
 
 // Criar uma nova tarefa
 exports.criarTarefa = async (req, res) => {
-   const { id_usuario, id_habito, titulo, concluida } = req.body;
-
-   try {
-    const novaTarefa = await tarefaModel.criarTarefa(id_usuario, id_habito, titulo, concluida);
+  try {
+    const id_usuario = req.session.usuario.id_usuario;
+    const { titulo, concluida = false } = req.body;;
+    const novaTarefa = await tarefaModel.criarTarefa(id_usuario, { titulo, concluida });
     res.status(201).json(novaTarefa);
   } catch (err) {
     console.error('Erro ao criar tarefa:', err);
@@ -16,9 +16,12 @@ exports.criarTarefa = async (req, res) => {
 
 // Listar todas as tarefas
 exports.listarTarefas = async (req, res) => {
+    const id_usuario = req.session.usuario.id_usuario; // pega o id do usuário logado
+
    try {
-      const tarefas = await tarefaModel.listarTarefas();
-      res.status(200).json(tarefas);
+      const tarefas = await tarefaModel.listarTarefas(id_usuario);
+      res.render('pages/tarefas', { tarefas });
+   /*    res.status(200).json(tarefas); */
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
@@ -26,23 +29,30 @@ exports.listarTarefas = async (req, res) => {
 
 // Editar uma tarefa
 exports.editarTarefa = async (req, res) => {
+  const id_usuario = req.session.usuario.id_usuario;
+  const { id_tarefa, titulo, concluida } = req.body;
+
   try {
-    const editar = await this.tarefaModel.editarTarefa();
-    res.status(200).json(editar)
-    if (result.rows.length === 0) {
+    const tarefaEditada = await tarefaModel.editarTarefa(id_usuario, id_tarefa, { titulo, concluida });
+
+    if (!tarefaEditada) {
       return res.status(404).json({ message: 'Tarefa não encontrada' });
     }
-    res.status(200).json(result.rows[0]);
+
+    res.status(200).json(tarefaEditada);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
 
+
 // Excluir uma tarefa
 exports.excluirTarefa = async (req, res) => {
   const { id_tarefa } = req.body;
+  const id_usuario = req.session.usuario.id_usuario; // pega o id do usuário logado
+
   try {
-    const tarefaDeletada = await tarefaModel.excluirTarefa(id_tarefa);
+    const tarefaDeletada = await tarefaModel.excluirTarefa(id_tarefa, id_usuario);
 
     if (!tarefaDeletada) {
       return res.status(404).json({ message: 'Tarefa não encontrada' });
@@ -56,9 +66,10 @@ exports.excluirTarefa = async (req, res) => {
 
 //marcar tarefa como concluida
 exports.concluirTarefa = async (req, res) => {
+  const id_usuario = req.session.usuario.id_usuario; // pega o id do usuário logado
   const {id_tarefa, concluida} = req.body;
   try {
-    const result = await tarefaModel.concluirTarefa(id_tarefa, concluida);
+    const result = await tarefaModel.concluirTarefa(id_tarefa, concluida, id_usuario);
 
     if (!result) {
       return res.status(404).json({ message: 'Tarefa não encontrada' });
