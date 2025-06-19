@@ -546,3 +546,7 @@ ul#lista-tarefas li button:last-of-type:hover {
   border-radius: 8px;
   box-shadow: 0 0 4px rgba(0,0,0,0.1);
 }
+
+    .info-perfil{
+  margin: 200px;
+ }

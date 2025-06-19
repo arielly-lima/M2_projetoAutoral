@@ -1,6 +1,6 @@
 const express = require('express');
-const session = require('express-session');
 const app = express();
+const session = require('express-session');
 
 app.use(session({
   secret: 'segredo_super_secreto', // pode ser qualquer string
@@ -22,11 +22,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/* //Mostrar a view de login
-app.get('/', (req, res) => {
-  res.render('pages/login');
-}); */
-
 //carrega as rotas do userRoutes
 const userRoutes = require('./routes/userRoutes');
 app.use('/', userRoutes); //ativa a api/users/(rotas que defini no userRoutes)
@@ -41,6 +36,9 @@ app.use('/habito', habitoRoutes);
 
 const interessesRoutes = require('./routes/interessesRoutes');
 app.use('/', interessesRoutes);
+
+const perfilRoutes = require('./routes/perfilRoutes');
+app.use('/', perfilRoutes);
 
 //mensagem de sucesso
 app.listen(port, () => {

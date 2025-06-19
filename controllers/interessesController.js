@@ -2,7 +2,7 @@ const interesseModel = require('../models/interessesModel');
 
 // Criar novo interesse
 exports.criarInteresse = async (req, res) => {
-  console.log("Sessão atual:", req.session); // <-- Coloque aqui dentro!
+  console.log("Sessão atual:", req.session);
 
   const id_usuario = req.session.usuario?.id_usuario;
   
@@ -18,8 +18,6 @@ exports.criarInteresse = async (req, res) => {
   try {
     await interesseModel.criarInteresse({ id_usuario, hobbies, filmes, series, musicas });
     res.redirect('/tarefas'); 
-/*     res.send('Interesse salvo com sucesso!'); */
-
   } catch (err) {
     console.error('Erro ao criar interesse:', err);
     res.render('pages/interesses', {

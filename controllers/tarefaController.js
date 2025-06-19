@@ -5,7 +5,7 @@ const tarefaModel = require('../models/tarefaModel');
 exports.criarTarefa = async (req, res) => {
   try {
     const id_usuario = req.session.usuario.id_usuario;
-    const { titulo, concluida = false } = req.body;;
+    const { titulo, concluida = false } = req.body;
     const novaTarefa = await tarefaModel.criarTarefa(id_usuario, { titulo, concluida });
     res.status(201).json(novaTarefa);
   } catch (err) {

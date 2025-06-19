@@ -27,9 +27,9 @@ exports.loginUsuario = async (req, res) => {
       return res.status(401).render('pages/login', { erro: 'Senha incorreta' });
     }
 
-    //Corrigir: salvar sessão ANTES de redirecionar
+  //Importante: salva a sessão ANTES de redirecionar
   req.session.usuario = {
-  id_usuario: usuario.id_usuario, // <-- precisa bater com o nome real do campo no banco!
+  id_usuario: usuario.id_usuario, //informações do banco
   nome: usuario.nome
 };
 
